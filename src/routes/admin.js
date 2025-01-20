@@ -1,8 +1,13 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import {authMiddleware ,roleMiddleware }from '../middlewares/authMiddleware.js'
+// import { database } from '../middlewares/databaseMiddleware.js';
+import { createAndConnectDatabase } from '../controllers/ClientController.js';
+import { database } from '../middlewares/databaseMiddleware.js';
+
 
 const router = express.Router();
+
 
 // Role-specific secret keys
 const roleSecrets = {
@@ -41,6 +46,8 @@ const login = (req, res) => {
 
 // Public route for login
 router.post('/login', login);
+
+router.get('/create',createAndConnectDatabase)
 
 // Apply authMiddleware to all protected routes
 router.use(authMiddleware);
