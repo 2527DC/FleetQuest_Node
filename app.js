@@ -15,7 +15,7 @@ app.use('/api', router);
 // Start the server and specify the host and port
 // const hostname = 'tenent1.fleetmanagement'; // You can also use '0.0.0.0' to listen on all interfaces
 const port = 3000;
-const hostname = 'tenent1.fleetmanagement';
+const hostname = 'tenent2.fleetQuest';
 app.listen(port, hostname, () => {
   console.log(`Server is running on http://${hostname}:${port}`);
 });

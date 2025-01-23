@@ -47,7 +47,9 @@ const login = (req, res) => {
 // Public route for login
 router.post('/login', login);
 
-router.get('/create',createAndConnectDatabase)
+router.get('/getdata',)
+
+router.post('/create',(req,res)=>{res.send(" i am don don is rate ")})
 
 // Apply authMiddleware to all protected routes
 router.use(authMiddleware);
