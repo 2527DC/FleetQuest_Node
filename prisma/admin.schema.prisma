@@ -1,4 +1,4 @@
-generator client {
+generator admin {
   provider = "prisma-client-js"
   output   = "./generated/admin-client"  // Custom output directory for the Prisma Client
 }

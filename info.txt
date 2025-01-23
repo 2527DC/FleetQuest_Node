@@ -1,0 +1,2 @@
+Command for migrating the schema 
+=> npx prisma migrate dev --schema=./prisma/admin.schema.prisma

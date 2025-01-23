@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
 const roleSecrets = {
-  superAdmin: 'superAdminSecretKey123',
-  subAdmin: 'subAdminSecretKey456',
-  clientAdmin: 'clientAdminSecretKey789',
+  superadmin: 'superAdminSecretKey123',
+  subadmin: 'subAdminSecretKey456',
+  clientadmin: 'clientAdminSecretKey789',
 };
 
 export const authMiddleware = (req, res, next) => {
@@ -31,10 +31,9 @@ export const authMiddleware = (req, res, next) => {
   }
 };
 
-
-export const roleMiddleware = (requiredRole) => {
+export const roleMiddleware = (allowedRoles) => {
   return (req, res, next) => {
-    if (req.user.role !== requiredRole) {
+    if (!allowedRoles.includes(req.user.role)) {
       return res.status(403).json({ message: 'Access denied. Insufficient permissions.' });
     }
     next();
