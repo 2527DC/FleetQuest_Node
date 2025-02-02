@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 const roleSecrets = {
   superadmin: 'superAdminSecretKey123',
-  subadmin: 'subAdminSecretKey456',
+  admin: 'subAdminSecretKey456',
   clientadmin: 'clientAdminSecretKey789',
 };
 
@@ -34,8 +34,9 @@ export const getusers = async (req) => {
     }
 
     // Compare passwords
+    
     if (user.password === password) {
-      const token = jwt.sign({ username, role }, secretKey, { expiresIn: '1h' });
+      const token = jwt.sign({ username,role}, secretKey, { expiresIn: '1h' });
       console.log('Password matches. User authenticated.',token);
       return { message: 'User authenticated', success: true, user, token :token };
     } else {

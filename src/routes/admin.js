@@ -1,8 +1,5 @@
 import express from 'express';
-
 import {authMiddleware ,roleMiddleware }from '../middlewares/authMiddleware.js'
-
-import { database } from '../middlewares/databaseMiddleware.js';
 import { login } from '../controllers/userController.js';
 
 
@@ -13,8 +10,10 @@ const router = express.Router();
 router.post('/login', login);
 
 // router.get('/getdata',getuserController)
+router.get('/create', (req, res) => {
+  res.send(`I am don don is rate, Hostname: ${req.hostname}`);
+});
 
-router.post('/create',(req,res)=>{res.send(" i am don don is rate ")})
 
 // Apply authMiddleware to all protected routes
 router.use(authMiddleware);

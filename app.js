@@ -1,7 +1,7 @@
 import express from 'express';
 import router from './src/routes/admin.js';
 import dotenv from 'dotenv';
-
+ import cors from 'cors'
 dotenv.config(); // Ensure environment variables are loaded
 const app = express();
 
@@ -10,12 +10,15 @@ app.use(express.json());
 
 // Middleware to parse URL-encoded data (if needed)
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow only your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // If using cookies or authentication headers
+}));
 // Use your routes
 app.use('/api', router);
 
-// Start the server and specify the host and port
-// const hostname = 'tenent1.fleetmanagement'; // You can also use '0.0.0.0' to listen on all interfaces
+
 const port = 3000;
 const hostname = 'localhost';
 app.listen(port, hostname, () => {
