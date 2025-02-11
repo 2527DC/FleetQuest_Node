@@ -1,6 +1,7 @@
 import express from 'express';
 import {authMiddleware ,roleMiddleware }from '../middlewares/authMiddleware.js'
 import { login } from '../controllers/userController.js';
+import { createEmployee } from '../controllers/employeeController.js';
 
 
 
@@ -14,7 +15,7 @@ router.get('/create', (req, res) => {
   res.send(`I am don don is rate, Hostname: ${req.hostname}`);
 });
 
-
+router.get("/createemploye",createEmployee)
 // Apply authMiddleware to all protected routes
 router.use(authMiddleware);
 
