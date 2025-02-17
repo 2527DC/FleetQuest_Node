@@ -26,5 +26,5 @@ jobs:
             git reset --hard origin/main  # Reset to the latest version
             git pull origin main          # Pull the latest code
             npm install                   # Install new dependencies
-            pm2 restart all               # Restart all PM2 processes
+            pm2 restart all               # Restart all PM2  
           EOF
