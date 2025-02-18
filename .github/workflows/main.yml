@@ -21,10 +21,25 @@ jobs:
       - name: Deploy code to VPS
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd /var/www/FleetQuest_Node # Change to your project directory
+            cd /var/www/FleetQuest_Node  # Change to your project directory
+            
+            echo "Fetching latest code..."
             git fetch --all
             git reset --hard origin/main  # Reset to the latest version
             git pull origin main          # Pull the latest code
-            npm install                   # Install new dependencies
-            pm2 restart all               # Restart all PM2  
+
+            echo "Installing dependencies..."
+            npm install  # Install new dependencies
+
+            echo "Applying database migrations..."
+            npx prisma migrate deploy  # Deploy migrations
+
+            echo "Synchronizing Prisma schema..."
+            npx prisma db pull  # Pull latest DB schema
+            npx prisma generate # Generate Prisma client
+
+            echo "Restarting application..."
+            pm2 restart all  # Restart all PM2 processes
+
+            echo "Deployment completed successfully!"
           EOF
