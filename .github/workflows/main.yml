@@ -32,7 +32,7 @@ jobs:
             npm install  # Install new dependencies
 
             echo "Applying database migrations..."
-         npx prisma migrate deploy --schema=prisma/schema # Deploy migrations
+            npx prisma migrate deploy --schema=prisma/schema # Deploy migrations
 
             echo "Synchronizing Prisma schema..."
             npx prisma db pull  # Pull latest DB schema
