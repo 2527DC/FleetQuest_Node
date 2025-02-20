@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Driver" ALTER COLUMN "phoneNumber" SET DATA TYPE TEXT,
+ALTER COLUMN "altPhoneNumber" SET DATA TYPE TEXT;

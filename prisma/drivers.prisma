@@ -1,0 +1,12 @@
+model Driver {
+
+  driverName       String  @unique
+  phoneNumber      String  @unique
+  altPhoneNumber   String?
+  city            String
+  vendor          String
+  currentAddress  String
+  permanentAddress String
+  gender          String
+  dateOfBirth     DateTime? // Added Date of Birth field
+}
