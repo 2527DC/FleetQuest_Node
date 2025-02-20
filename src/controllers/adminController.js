@@ -19,7 +19,7 @@ const addDriver = async (req, res) => {
       }
     });
 
-    res.status(201).json({ message: "Driver added successfully", newDriver });
+    res.status(201).json({ message: "Driver added successfullyy", newDriver });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
