@@ -65,4 +65,3 @@ try {
 } catch (error) {
   console.error('❌ Migration failed:', error.message);
 }
-/Users/admin/Desktop/Node/fleetquest-backend/prisma

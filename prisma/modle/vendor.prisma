@@ -1,0 +1,9 @@
+
+model vendor{
+
+    vendorName    String @unique
+    phoneNumber   Int @unique
+    city            String
+    companyName  String
+    vehicleNo    Int
+}

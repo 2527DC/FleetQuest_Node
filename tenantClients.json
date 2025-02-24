@@ -1,0 +1,5 @@
+{
+  "tenant3": {
+    "dbUrl": "postgresql://postgres:root@localhost:5432/tenant3"
+  }
+}

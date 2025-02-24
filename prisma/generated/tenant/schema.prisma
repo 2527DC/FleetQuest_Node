@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/tenant"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // ✅ Keep only this line, remove `schemas`
+}
+
+model User {
+  id    String @id
+  email String @unique
+  // ... other tenant-specific models 
+}
