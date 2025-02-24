@@ -30,14 +30,17 @@ jobs:
 
             echo "Installing dependencies..."
             npm install  # Install new dependencies
-
+            
+            echo "Checking Prisma schema file..."
+            ls -l /var/www/FleetQuest_Node/p  isma/schema/
+            
             echo "Applying database migrations..."
-            npx prisma migrate deploy --schema=prisma/schema/default.prisma # Deploy migrations
+            npx prisma migrate deploy --schema=/var/www/FleetQuest_Node/prisma/schema/default.prisma
 
             echo "Synchronizing Prisma schema..."
-            npx prisma db pull  # Pull latest DB schema
-            npx prisma generate # Generate Prisma client
-
+            npx prisma db pull --schema=/var/www/FleetQuest_Node/prisma/schema/default.prisma  # Pull latest DB schema
+            npx prisma generate --schema=/var/www/FleetQuest_Node/prisma/schema/default.prisma # Generate Prisma client
+            
             echo "Restarting application..."
             pm2 restart all  # Restart all PM2 processes
 
